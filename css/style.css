@@ -1,109 +1,92 @@
-body, html {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
-
 body {
-  background: #faf8ef;
-  color: #776e65;
+    background: #faf8ef;
+    color: #776e65;
+    text-align: center;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 18px;
 }
-
 h1 {
-  margin: 0;
-  font-size: 60px;
+    font-size: 60px;
 }
-
 header {
-  width: 70vmin;
-  margin: 3% auto 0;
-  font-size: 18px;
+    display: flex;
+    justify-content: space-between;
 }
-
-header > div {
-  display: flex;
-  justify-content: space-between;
-}
-
-.restart-button {
-  display: flex;
-  height: 70px;
-  align-items: center;
-  background: #8f7a66;
-  border-radius: 3px;
-  padding: 0 20px;
-  color: #f9f6f2;
-  font-weight: bold;
-  font-size: 22px;
-}
-
-.scores-container {
-  display: flex;
-  justify-content: flex-start;
-  padding: 30px 0;
-  text-align: left;
-  color: #f9f6f2;
-}
-
-.score, .best-result {
-  position: relative;
-  width: 90px;
-  margin-right: 10px;
-  padding: 30px 20px 5px;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 3px;
-  text-align: center;
-}
-
-.score::before {
-  content: "Счет";
-}
-
-.best-result::before {
-  content: "Рекорд";
-}
-
-.score::before, .best-result::before {
-  position: absolute;
-  top: 7px;
-  left: 0;
-  width: 100%;
-  color: #eee4da;
-}
-
 .wrapper {
-  width: 70vmin;
-  height: 70vmin;
-  margin: 0 auto;
-  background-color: #AAACA8;
+    width: 500px;
+    margin: 100px auto;
+}
+.restart-button {
+    display: flex;
+    align-items: center;
+    background: #8f7a66;
+    border-radius: 3px;
+    padding: 0 20px;
+    color: #f9f6f2;
+    font-weight: bold;
+}
+.scores-container {
+    display: flex;
+    padding: 30px 0;
+    text-align: left;
+    color: #f9f6f2;
+}
+.score, .best-result {
+    position: relative;
+    width: 90px;
+    margin-right: 10px;
+    padding: 30px 20px 5px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+    text-align: center;
+}
+.score::before, .best-result::before {
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 100%;
+    color: #eee4da;
+}
+.score::before {
+    content: "Счет";
+}
+.best-result::before {
+    content: "Рекорд";
 }
 
-.grid {
-  position: relative;
-  width: 100%;
-}
+/* Game grid*/
 
-.cell {
-  width: 15vmin;
-  height: 15vmin;
-  margin: 2vmin 2vmin 0 0;
-  background-color: #C5C6BE;
-  float: left;
+.game-container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    margin-top: 40px;
+    padding: 15px;
+    background: #bbada0;
+    border-radius: 6px;
+    cursor: default;
 }
-
-/* add left margin to first childs of rows */
-.cell:nth-child(4n+1) {
-  margin-left: 2vmin;
+.grid-container {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    z-index: 1;
 }
-
-.number {
-  position: absolute;
-  height: 15vmin;
-  width: 15vmin;
-  font-size: 5vmin;
-  font-weight: bold;
-  text-align: center;
-  line-height: 15vmin;
-  color: #776e65;
-  transition: all .3s;
+.grid-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 106px;
+    height: 106px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    font-size: 40px;
+    font-weight: bold;
+    transition: all .3s;
 }

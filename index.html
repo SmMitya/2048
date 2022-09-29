@@ -12,25 +12,27 @@
 <body>
 
   <div class="wrapper">
-    <div class="grid">
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
+    <header>
+        <h1>2048</h1>
+        <div class="restart-button">Новая игра</div>
+    </header>
+   
+
+    <div class="game-container">
+        <div class="grid-container"></div>
     </div>
-  </div>
+    
+    <div class="game-message">
+        <div class="result"></div>
+    </div>
+
+    <div>
+      <div class="scores-container">
+          <div class="score">0</div>
+          <div class="best-result">0</div>
+      </div>
+    </div>
+</div>
 
   <script type="module" src="js/app.js"></script>
 </body>
