@@ -12,14 +12,6 @@
 
 import Board from './board.js';
 
-function ArrowBtnHandler(e) {
-  if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
-    return;
-  }
-
-  console.log(e.key);
-}
-
 /* 
   игровая логика, начать игру, проследить не окончена ли игра, есть ли победитель и подобная логика
 */
@@ -33,12 +25,27 @@ class GameManager {
 
   init() {
     this.board = new Board();
-    this.board.init()
-    document.addEventListener('keyup', ArrowBtnHandler);
+    this.board.init();
+    this.board.generateNewCell();
+    this.board.generateNewCell();
+    document.addEventListener('keyup', this.arrowBtnHandler.bind(this));
   }
 
   checkIsGameOver() {
     console.log('checkIsGameOver');
+  }
+
+  arrowBtnHandler(e) {
+    if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
+      return;
+    }
+    // новая логика:
+    this.board.movingColumn();
+    this.board.combineColumn();
+    // 1)генерация нового элемента 
+    this.board.generateNewCell();
+
+    console.log(e.key);
   }
 }
 
