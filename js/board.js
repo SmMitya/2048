@@ -39,10 +39,36 @@ export default class Board {
     }
   }
 
+  movingRow(direction) {
+    for (let i = 0; i < this.widthBoard * this.widthBoard; i++) {
+      if (i % 4 === 0) {
+        this.fillRow(i, direction === 'ArrowLeft');
+      }
+    }
+}
+
   movingColumn(direction) {
     for (let i = 0; i < this.widthBoard; i++) {
-      this.fillColumn(i, direction === 'up');
+      this.fillColumn(i, direction === 'ArrowUp');
     }
+  }
+
+  // объединение значений в строках
+  fillRow(rowIndex, isLeft) {
+    const row = [];
+
+    for (let i = 0; i < this.widthBoard; i++) {
+      row.push(this.cells[rowIndex + i].getValue());
+    }
+
+    let filteredRow = row.filter(num => num);
+    let emptyCellInRowSize = this.widthBoard - filteredRow.length;
+
+    let newRow = this.makeNewSequence(filteredRow, emptyCellInRowSize, isLeft);
+
+    newRow.forEach((value, i) => {
+      this.cells[rowIndex + i].setValue(value);
+    });
   }
 
   // объединение значений в столбцах
@@ -70,7 +96,21 @@ export default class Board {
     return isReverse ? numbers.concat(emptySequence) : emptySequence.concat(numbers);
   }
 
-  combineColumn() {
+  combineRow(direction) {
+    for (let i = 15; i > 0; i--) {
+      if ((this.cells[i].getValue() === this.cells[i - 1].getValue()) && this.cells[i].getValue() !== '' && i % 4 !== 0) {
+        let combinedTotal = parseInt(this.cells[i].getValue()) + parseInt(this.cells[i - 1].getValue())
+        
+        this.cells[i].setValue(combinedTotal);
+        this.cells[i - 1].setValue('');
+      }
+    }
+    
+    this.movingRow(direction)
+    // проверить на выигрыш
+}
+
+  combineColumn(direction) {
     for (let i = 15; i >= 4; i--) {
       if ((this.cells[i].getValue() === this.cells[i - this.widthBoard].getValue()) && this.cells[i].getValue() !== '') {
         let combinedTotal = parseInt(this.cells[i].getValue()) + parseInt(this.cells[i - this.widthBoard].getValue());
@@ -80,7 +120,9 @@ export default class Board {
       }
     }
 
-    this.movingColumn();
+    this.movingColumn(direction);
     // проверить на выигрыш
-}
+  }
+
+
 }

@@ -36,16 +36,25 @@ class GameManager {
   }
 
   arrowBtnHandler(e) {
-    if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
-      return;
-    }
-    // новая логика:
-    this.board.movingColumn();
-    this.board.combineColumn();
-    // 1)генерация нового элемента 
-    this.board.generateNewCell();
+    const direction = e.key;
 
-    console.log(e.key);
+    if (direction === 'ArrowUp') {
+      this.board.movingColumn(direction);
+      this.board.combineColumn(direction);
+      this.board.generateNewCell();
+    } else if (direction === 'ArrowDown') {
+      this.board.movingColumn(direction);
+      this.board.combineColumn(direction);
+      this.board.generateNewCell();
+    } else if (direction === 'ArrowLeft') {
+      this.board.movingRow(direction);
+      this.board.combineRow(direction);
+      this.board.generateNewCell();
+    } else if (direction === 'ArrowRight') {
+      this.board.movingRow(direction);
+      this.board.combineRow(direction);
+      this.board.generateNewCell();
+    }
   }
 }
 
