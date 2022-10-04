@@ -33,19 +33,19 @@ class GameManager {
     if (direction === 'ArrowUp') {
       this.board.movingColumn(direction);
       this.board.combineColumn(direction);
-      this.board.generateNewCell();
+      this.board.generateNewElement();
     } else if (direction === 'ArrowDown') {
       this.board.movingColumn(direction);
       this.board.combineColumn(direction);
-      this.board.generateNewCell();
+      this.board.generateNewElement();
     } else if (direction === 'ArrowLeft') {
       this.board.movingRow(direction);
       this.board.combineRow(direction);
-      this.board.generateNewCell();
+      this.board.generateNewElement();
     } else if (direction === 'ArrowRight') {
       this.board.movingRow(direction);
       this.board.combineRow(direction);
-      this.board.generateNewCell();
+      this.board.generateNewElement();
     }
   }
 }

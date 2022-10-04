@@ -39,6 +39,13 @@ export default class Board {
     }
   }
 
+  // Задержка на появление числа
+  generateNewElement() {
+    setTimeout(() => {
+      this.generateNewCell()
+    }, 150);
+  }
+
   movingRow(direction) {
     for (let i = 0; i < this.widthBoard * this.widthBoard; i++) {
       if (i % 4 === 0) {
